@@ -2,7 +2,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const sql = require('mssql/msnodesqlv8');
 const path = require('path');
-const { query } = require('express');
 
 const app = express();
 const port = 3000;

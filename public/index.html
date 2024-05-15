@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>0xDataMan</title>
+		<link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="/assets/styles/style.css">
+		<link rel="shortcut icon" type="image/x-icon" href="/assets/images/game-boy8bit.png">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="header-msg">
+				<font color="#4CAF50">0x</font><font color="#8BC34A">DataMan</font>
+			</div>
+			<br>
+			<div class="body-content">
+				<p>Hello Hacker - How can we serve you today!</p>
+				<img src="/assets/images/game-boy8bit.png" width=100>
+				<form id="query-form">
+                    <div>
+                        <font color="red" >Please note that if you have multiple values it has to be in the form of value1, value2 ,...., etc</font>
+                    </div>
+                <br>
+					<label for="my-input">Query:</label>
+					<input type="text" class="bit8-textfield" name="query">
+                    <label for="values">Values:</label>
+					<input type="text" id="values" class="bit8-textfield" name="valueToInsert">
+                    <label for="table">Table Name:</label>
+					<input type="text" class="bit8-textfield" name="table">
+					<button type="submit" class="bit8-button">Submit</button>
+				</form>
+				<br>
+				<p style="font-weight: bold;font-size: 20px;padding-top:20px;">Query Results:</p>
+				<div id="results">
+                    No results yet. Please insert a query.
+				</div>
+                <script>
+                    $(document).ready(function(){
+                        $('#query-form').submit(function(event){
+                            event.preventDefault();
+                
+                            // Serialize form data
+                            const formData = $(this).serialize();
+                            console.log(formData)
+                            $.ajax({
+                                url: '/index.js',
+                                method: 'post',
+                                data: formData,
+                                success: function(response){
+                                    console.log("Query executed successfully.");
+                                    $('#results').html(JSON.stringify(response));
+                                    //console.log(response);
+
+                                },
+                                error: function(xhr, status, error) {
+                                    console.error('Error:', error);
+                                    $('#results').html("Error: " + error);
+                                }
+                            });
+                        });
+                    });
+                </script>
+                
+			</div>
+		</div>
+	</body>
+</html>
+

@@ -76,3 +76,8 @@ body{
 .grid-item p {
   text-align: justify;
 }
+
+input[name=valueToInsert]::placeholder
+{
+  font-size: 10px;
+}

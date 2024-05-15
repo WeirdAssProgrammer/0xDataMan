@@ -41,13 +41,17 @@ app.post('/index.js', async (req, res) => {
         action = `INSERT INTO ${table} VALUES (${valueToInsert})`;
         break;
       case 'delete':
-        action = `DELETE FROM ${table}`; // Replace 'condition' with your actual condition
+        action = `DELETE FROM ${table} WHERE ${valueToInsert}`; // Replace 'condition' with your actual condition
         break;
       case 'select':
         action = `SELECT ${valueToInsert} FROM ${table} `; // Replace 'condition' with your actual condition
         break;
+      case 'update':
+        action = `UPDATE ${table} SET ${valueToInsert}`
+        break;
       default:
         res.status(400).send('Unsupported action');
+
         return;
     }
     

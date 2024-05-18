@@ -8,7 +8,7 @@ const port = 3000;
 
 // Database configuration
 const config = {
-  database: 'Uni',
+  database: 'UniLib',
   server: 'DESKTOP-UJF92EC',
   driver: 'msnodesqlv8',
   connectionString: 'Driver={SQL Server};Server=DESKTOP-UJF92EC;Database=Uni;Trusted_Connection=Yes;'

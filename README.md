@@ -1,5 +1,5 @@
 # 0xDataMan
-A basic JavaScript/MS SQL implementation
+A basic JavaScript(Jquery/Nodejs(Express))/MS SQL implementation
 ## Credits
  - Created By [MohamedYossery](mailto:cfmohammed24@gmail.com) with student ID of 20235061, Massa Goda with Student ID 20235055, Ahmed Khaled Eltatawy with Student ID of 20235060
  - GUI inspired by [HackTheBox](https://app.hackthebox.com) 0xOverChuncked challenge

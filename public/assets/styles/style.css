@@ -81,3 +81,40 @@ input::placeholder
 {
   font-size: 10px;
 }
+
+#results {
+  white-space: pre-wrap; /* CSS3 */
+  white-space: -moz-pre-wrap; /* Mozilla */
+  white-space: -pre-wrap; /* Opera 4-6 */
+  white-space: -o-pre-wrap; /* Opera 7 */
+  word-wrap: break-word; /* Internet Explorer 5.5+ */
+  padding: 10px; /* Optional: padding for better readability */
+  border: 1px solid #ccc; /* Optional: border for better readability */
+  font-family: monospace; /* Optional: use a monospaced font for better readability */
+  overflow: auto; /* Optional: scroll bar if content overflows */
+}
+
+#results table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 18px;
+  text-align: left;
+}
+
+#results th, #results td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+}
+
+#results th {
+  background-color: #f2f2f2;
+}
+
+#results tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+#results tr:hover {
+  background-color: #f1f1f1;
+}

@@ -77,7 +77,7 @@ body{
   text-align: justify;
 }
 
-input[name=valueToInsert]::placeholder
+input::placeholder
 {
   font-size: 10px;
 }

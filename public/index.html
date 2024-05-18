@@ -21,14 +21,42 @@
                         <font color="red" >Please note that if you have multiple values it has to be in the form of value1, value2 ,...., etc</font>
                     </div>
                 <br>
+                <h3>
+                    <font color="#4CAF50">Q</font><font color="#8BC34A">uery</font>
+                </h3>
 					<label for="my-input">Query:</label>
 					<input type="text" class="bit8-textfield" name="query">
                     <label for="values">Values:</label>
 					<input type="text" id="values" class="bit8-textfield" name="valueToInsert">
                     <label for="table">Table Name:</label>
 					<input type="text" class="bit8-textfield" name="table">
-					<button type="submit" class="bit8-button">Submit</button>
+                    <br>
+                    <br>
+					<button type="submit" class="bit8-button">Submit Query</button>
 				</form>
+                <form id="join-form">
+                    <h3>
+                        <font color="#4CAF50">J</font><font color="#8BC34A">oin</font>
+                    </h3>
+                    <br>
+                    <label for="my-input">Table1:</label>
+					<input type="text" class="bit8-textfield" name="table1">
+                    <br>
+                    <br>
+                    <label for="values">Table2:</label>
+					<input type="text" id="values" class="bit8-textfield" name="table2">
+                    <br>
+                    <br>
+                    <label for="values">Join Condition:</label>
+					<input type="text" class="bit8-textfield" name="condition" placeholder="employees.dept_id = departments.dept_id">
+                    <br>
+                    <br>
+                    <label for="values">Columns To show:</label>
+					<input type="text" class="bit8-textfield" name="colsToShow" placeholder="table1.col, table2.col">
+                    <br>
+                    <br>
+					<button type="submit" class="bit8-button">Submit Join</button>
+                </form>
 				<br>
 				<p style="font-weight: bold;font-size: 20px;padding-top:20px;">Query Results:</p>
 				<div id="results">
@@ -86,6 +114,26 @@ Where condition;`)
                                 data: formData,
                                 success: function(response){
                                     console.log("Query executed successfully.");
+                                    $('#results').html(JSON.stringify(response));
+                                    //console.log(response);
+
+                                },
+                                error: function(xhr, status, error) {
+                                    console.error('Error:', error);
+                                    $('#results').html("Error: " + error);
+                                }
+                            });
+                        });
+                        $('#join-form').submit(function (event) {
+                            event.preventDefault();
+                            // serialize form data
+                            const formData = $(this).serialize();
+                            $.ajax({
+                                url: '/index.js',
+                                method: 'post',
+                                data: formData,
+                                success: function(response){
+                                    console.log("Join Query executed successfully.");
                                     $('#results').html(JSON.stringify(response));
                                     //console.log(response);
 

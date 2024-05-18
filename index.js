@@ -31,10 +31,23 @@ app.get('/index.js', (req, res) => {
 });
 // Handle POST requests to execute SQL commands
 app.post('/index.js', async (req, res) => {
-  const { query, valueToInsert, table } = req.body;
+  const { query, valueToInsert, table, table1, table2, condition, colsToShow } = req.body;
   console.log(req.body)
   try {
     let result;
+    if (table1 && table2 && colsToShow && condition) {
+      let action = `
+          SELECT ${colsToShow}
+          FROM ${table1} INNER JOIN ${table2}
+          ON ${condition};
+          `;
+      const pool = await sql.connect(config);
+      result = await pool.request().query(action);
+      console.log(result.recordset)
+      // Send the query results back to the client
+      res.send(result.recordset);
+      return;
+      }
     switch (query.toLowerCase()) {
       case 'insert':
         action = `INSERT INTO ${table} VALUES (${valueToInsert})`;

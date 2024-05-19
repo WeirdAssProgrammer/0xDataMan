@@ -1,3 +1,47 @@
+function recordSetToHtmlTable(recordSet) {
+    if (!Array.isArray(recordSet) || recordSet.length === 0) {
+        return "<p>No data available</p>";
+    }
+
+    // Create table element
+    const table = document.createElement("table");
+    table.style.borderCollapse = "collapse";
+    table.style.width = "100%";
+
+    // Create table header
+    const thead = table.createTHead();
+    const headerRow = thead.insertRow();
+    
+    // Get the keys from the first record as column headers
+    const headers = Object.keys(recordSet[0]);
+    headers.forEach(header => {
+        const th = document.createElement("th");
+        th.textContent = header;
+        th.style.border = "1px solid #000";
+        th.style.padding = "8px";
+        th.style.backgroundColor = "black";
+        headerRow.appendChild(th);
+    });
+
+    // Create table body
+    const tbody = table.createTBody();
+    recordSet.forEach(record => {
+        const row = tbody.insertRow();
+        headers.forEach(header => {
+            const cell = row.insertCell();
+            cell.textContent = record[header];
+            cell.style.border = "1px solid #000";
+            cell.style.padding = "8px";
+        });
+    });
+
+    // Convert table element to HTML string
+    const div = document.createElement("div");
+    div.appendChild(table);
+    return div.innerHTML;
+}
+
+
 $(document).ready(function(){
 // document.querySelector("#values").setAttribute("placeholder", `Values to ${$('input[name=query]').val()}`)
  // Define a variable to store the timeout ID
@@ -46,7 +90,7 @@ $('#query-form').submit(function(event){
         data: formData,
         success: function(response){
             console.log("Query executed successfully.");
-            $('#results').html(JSON.stringify(response));
+            $('#results').html(recordSetToHtmlTable((response)));
             //console.log(response);
 
         },
@@ -66,7 +110,7 @@ $('#join-form').submit(function (event) {
         data: formData,
         success: function(response){
             console.log("Join Query executed successfully.");
-            $('#results').html(JSON.stringify(response));
+            $('#results').html(recordSetToHtmlTable((response)));
             //console.log(response);
 
         },

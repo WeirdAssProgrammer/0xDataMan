@@ -104,17 +104,16 @@ input::placeholder
 
 #results th, #results td {
   padding: 12px 15px;
-  border: 1px solid #ddd;
+  border: 1px solid #000000;
 }
 
-#results th {
-  background-color: #f2f2f2;
-}
 
 #results tr:nth-child(even) {
-  background-color: #f9f9f9;
+  background-color: #000000b6;
 }
+
 
 #results tr:hover {
   background-color: #f1f1f1;
+  color: #000000;
 }

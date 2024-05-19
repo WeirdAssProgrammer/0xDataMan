@@ -111,7 +111,10 @@ input::placeholder
 #results tr:nth-child(even) {
   background-color: #000000b6;
 }
-
+#results th:hover
+{
+  color: coral;
+}
 
 #results tr:hover {
   background-color: #f1f1f1;
